@@ -1,6 +1,7 @@
 ## SISUKORD
 - [Põhimõisted](#põhimõisted)
 - [Piiragnud](#piiragnud)
+- [Andmetüübid](#andmetüübid)
 # Andmebaasid
 Andmebaasid, SQL, konspektid
 ## Andmebaasid
