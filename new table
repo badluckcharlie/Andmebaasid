@@ -1,0 +1,86 @@
+Create Database Ivanov_Baas;
+
+--ab kustutame
+DROP Database VlTKr;
+
+USE Ivanov_Baas;
+CREATE TABLE tootaja(
+tootajaID int PRIMARY KEY identity(1,1), --identity - automaatselt kasvav arv +1
+eesnimi varchar(15) not null,
+perekonnanimi varchar (30) not null,
+synniaeg date,
+aadress TEXT,
+koormus int CHECK (koormus>0), --piirang >0
+aktiivne bit)
+-- tabeli kuvamine
+SELECT * FROM tootaja;
+
+-- lisame andmed tabelisse
+INSERT INTO tootaja(perekonnanimi,eesnimi,synniaeg)
+VALUES ('Ivanov','Lexa','2250-4-4')
+
+INSERT INTO tootaja
+VALUES ('Toxa','Kirkov','2250-4-4','Koplimäe tn 123', 120, 1),
+
+INSERT INTO tootaja
+VALUES ('Voxa','Zhirkov','2220-1-1','Kreuzberg StraBe 123', 321, 1),
+('Goxa','Binkov','2221-6-1','Novy Praha 31', 321, 1)
+
+--andmete uuendamine tabelis
+UPDATE tootaja SET aadress='Tallinn', koormus=10, aktiivne=1
+where tootajaID=1
+
+DROP TABLE toovahetus
+
+CREATE TABLE toovahetus(
+toovahetusID int PRIMARY KEY identity(1,1),
+kuupaev date,
+tundideArv int,
+tootajaID int,
+FOREIGN KEY (tootajaID) REFERENCES tootaja(tootajaID))
+
+select * FROM toovahetus;
+select * FROM tootaja;
+
+--täidame tabeli
+INSERT INTO toovahetus
+VALUES ('2026-04-14', 7, 11)
+
+
+
+
+
+USE Ivanov_Baas;
+CREATE TABLE koolitus(
+KoolitusID int PRIMARY KEY identity(1,1), --identity - automaatselt kasvav arv +1
+nimetus varchar(30) not null,
+kestvus int not null,
+algus date,
+lopp date,
+opetaja varchar (30) not null,
+)
+INSERT INTO koolitus(nimetus,kestvus,algus,lopp,opetaja)
+VALUES
+('Robootika','2 kuud','2025-04-04','2025-06-06', 'Sergei'),
+('Arvutivõrgud','5 kuud','2025-09-01','2025-03-01', 'Markus'),
+('Linux','3 kuud','2025-03-01','2025-06-01', 'Lury')
+
+select * FROM koolitus
+
+USE Ivanov_Baas;
+DROP TABLE opetamine
+CREATE TABLE opetamine(
+opetamineID int PRIMARY KEY identity(1,1),
+tootajaID int,
+KoolitusID int,
+tunnistus varchar (30) not null,
+FOREIGN KEY (tootajaID) REFERENCES tootaja(tootajaID),
+FOREIGN KEY (KoolitusID) REFERENCES koolitus(KoolitusID))
+INSERT INTO opetamine(tootajaID,KoolitusID,tunnistus)
+VALUES
+('1','1','ON'),
+('2','2','ON'),
+('3','3','ON')
+
+select * FROM koolitus
+select * FROM opetamine
