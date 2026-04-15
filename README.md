@@ -19,7 +19,9 @@ Päring - запрос
 
 ## Piiragnud - Constraint
 ## Andmetüübid
+```
 1. int, smallint, decimal (5,2) - numbrilised (Только когда с числами будут мат. операции)
 2. varchar(30), char (5), TEXT/sümbolised
 3. date, time, datetime - kuupäeva
 4. boolean, bit, bool - loogilised
+```
