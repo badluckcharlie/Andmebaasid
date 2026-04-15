@@ -30,3 +30,7 @@ Päring - запрос
 3. date, time, datetime - kuupäeva
 4. boolean, bit, bool - loogilised
 ```
+## Tabelivahelised seosed
+- Üks-ühele (Nt naine-mees)
+- Üks-mitmele (Nt naine-lapsed)
+- Mitme-mitmele (Õpilased-Tunnid)
