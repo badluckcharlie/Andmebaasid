@@ -1,3 +1,6 @@
+## SISUKORD
+- [Põhimõisted](#põhimõisted)
+
 # Andmebaasid
 Andmebaasid, SQL, konspektid
 ## Andmebaasid
