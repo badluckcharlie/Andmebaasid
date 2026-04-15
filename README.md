@@ -4,7 +4,7 @@ Andmebaasid, SQL, konspektid
 andmebaaside haldusega seotud sql kood ja konspektid
 
 ## Põhimõisted
-- Andmebaassihalhudsüsteemid - tarkvara, millega abil saab luaa andmebaas (mariaDB - XAMMP, SQL Server - SQL Server Management studio)
+- Andmebaassihalhudsüsteemid - tarkvara, millega abil saab luaa andmebaas (mariaDB - XAMMP, SQL Server - SQL Server Management studio) (Server name (localdb)\MSSQLLocalDB )
 - Andmebaas - Struktureeritud andmete kogum
 - Tabel - olem - сущности
 - Veerg = väli - поле
