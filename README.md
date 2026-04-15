@@ -1,0 +1,2 @@
+# Andmebaasid
+Andmebaasid, SQL, konspektid
