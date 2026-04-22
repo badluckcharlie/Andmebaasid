@@ -38,3 +38,18 @@ Päring - запрос
 - Üks-ühele (Nt naine-mees)
 - Üks-mitmele (Nt naine-lapsed)
 - Mitme-mitmele (Õpilased-Tunnid)
+## ALTER TABLE - Tabeeli struktuuri muutmine
+ˇˇˇsql
+--1. Uue veeru lisamine
+ALTER TABLE tootaja ADD testVeerg int;
+SELECT * from tootaja
+
+--2. Veeru kustutamine
+ALTER TABLE tootaja DROP COLUMN testVeerg;
+SELECT * from tootaja
+
+--3. andmetüübi muutmine veerus
+ALTER TABLE tootaja ALTER COLUMN testVeerg varchar(5);
+SELECT * from tootaja
+--Stuktuuri Kontrollimiseks kasutame käsku:
+sp_help tootaja;
