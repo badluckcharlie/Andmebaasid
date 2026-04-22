@@ -1,0 +1,65 @@
+USE Ivanov_pv24
+CREATE TABLE Category(
+idCategory int PRIMARY KEY identity(1,1),
+Category_Name Varchar(15) not null,
+)
+USE Ivanov_pv24
+
+INSERT INTO Category
+values ('piima')
+INSERT INTO Category
+values ('liha')
+
+
+CREATE TABLE ProductN(
+idProduct int Primary key Identity(1,1),
+PName varchar (20) not null,
+idCategory int,
+FOREIGN key (idCategory) REFERENCES Category(idCategory),
+Price int not null,
+)
+
+INSERT INTO Product (PName,idCategory,Price)
+values ('Jogurt','1',2) --WRONG
+ALTER TABLE Product ALTER COLUMN idCategory int(1);
+DELETE FROM Product WHERE idProduct=4
+UPDATE Product
+SET idCategory=1
+WHERE Pname='Jogurt'
+
+INSERT INTO Product (PName,idCategory,Price)
+values ('liha','2',5) --CORRECT
+
+USE Ivanov_pv24
+CREATE TABLE Sale(
+idSale int Primary key identity(1,1),
+idProduct int,
+idCustomer int,
+Count_pr int not null,
+Date_of_sale date,
+FOREIGN KEY (idProduct) REFERENCES Productn(idProduct),
+FOREIGN KEY (idCustomer) REFERENCES Customer(idCustomer),
+)
+INSERT INTO Sale (idProduct,idCustomer,Count_pr,Date_of_sale)
+values ('3','1','2','2026-04-22')
+
+INSERT INTO Sale (idProduct,idCustomer,Count_pr,Date_of_sale)
+values ('5','2','3','2026-03-13')
+
+CREATE TABLE Customer(
+idCustomer int PRIMARY KEY identity(1,1),
+Customer_name varchar(20),
+Contact varchar(32),
+)
+
+INSERT INTO Customer
+values ('John Johnson','Johny@super.mail.com')
+INSERT INTO Customer
+values ('Bob Williams','Bob@ultra.mail.com')
+
+
+
+select * FROM Category
+select * FROM Product
+select * FROM Sale
+select * FROM Customer
