@@ -39,7 +39,7 @@ Päring - запрос
 - Üks-mitmele (Nt naine-lapsed)
 - Mitme-mitmele (Õpilased-Tunnid)
 ## ALTER TABLE - Tabeeli struktuuri muutmine
-ˇˇˇsql
+```sql
 --1. Uue veeru lisamine
 ALTER TABLE tootaja ADD testVeerg int;
 SELECT * from tootaja
