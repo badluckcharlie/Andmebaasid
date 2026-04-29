@@ -11,6 +11,15 @@ country_state Varchar (35),
 zip_code Varchar (10)
 )
 
+INSERT INTO customers (first_name,last_name,phone,email,street,city,country_state,zip_code)
+values ('John','Jackson','+1234567','john_jackson@mail.com','Bakery Str', 'Austin', 'USA','111111')
+
+INSERT INTO customers (first_name,last_name,phone,email,street,city,country_state,zip_code)
+values ('Bob','Clarkson','+56534567','Bob_Clarskon@mail.com','Avery Str', 'NYC', 'USA','333311')
+
+INSERT INTO customers (first_name,last_name,phone,email,street,city,country_state,zip_code)
+values ('Abe','Schlachshwisse','+66534567','Abe_Schlaht@mail.com','Friedrieshain StraBe', 'Berlin', 'Germany','541823')
+
 USE Aleksei_Tund3
 CREATE TABLE stores(
 store_id int PRIMARY KEY IDENTITY(1,1),
@@ -22,6 +31,13 @@ city Varchar (30),
 country_state Varchar (35),
 zip_code Varchar (10)
 )
+
+INSERT INTO stores (store_name,phone,email,street,city,country_state,zip_code)
+values ('ZigZie','+4324234','Zigziesupport@mail.com','ostmark str','Kopenhagen','Denmark','34292')
+INSERT INTO stores (store_name,phone,email,street,city,country_state,zip_code)
+values ('Bennys','+3333234','Bennyshopping@mail.com','coal str','London','UK','32343')
+INSERT INTO stores (store_name,phone,email,street,city,country_state,zip_code)
+values ('Big&Bang','+543123423','bigbanglive@mail.com','bagguette str','Paris','France','99999')
 
 USE Aleksei_Tund3
 CREATE TABLE staffs(
