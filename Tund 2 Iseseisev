@@ -1,65 +1,125 @@
-USE Ivanov_pv24
-CREATE TABLE Category(
-idCategory int PRIMARY KEY identity(1,1),
-Category_Name Varchar(15) not null,
-)
-USE Ivanov_pv24
-
-INSERT INTO Category
-values ('piima')
-INSERT INTO Category
-values ('liha')
-
-
-CREATE TABLE ProductN(
-idProduct int Primary key Identity(1,1),
-PName varchar (20) not null,
-idCategory int,
-FOREIGN key (idCategory) REFERENCES Category(idCategory),
-Price int not null,
+USE Aleksei_Tund3
+CREATE TABLE customers(
+customer_id int PRIMARY KEY identity (1,1),
+first_name Varchar(20),
+last_name Varchar (20),
+phone Varchar (25),
+email Varchar (30),
+street Varchar (30),
+city Varchar (30),
+country_state Varchar (35),
+zip_code Varchar (10)
 )
 
-INSERT INTO Product (PName,idCategory,Price)
-values ('Jogurt','1',2) --WRONG
-ALTER TABLE Product ALTER COLUMN idCategory int(1);
-DELETE FROM Product WHERE idProduct=4
-UPDATE Product
-SET idCategory=1
-WHERE Pname='Jogurt'
+INSERT INTO customers (first_name,last_name,phone,email,street,city,country_state,zip_code)
+values ('John','Jackson','+1234567','john_jackson@mail.com','Bakery Str', 'Austin', 'USA','111111')
 
-INSERT INTO Product (PName,idCategory,Price)
-values ('liha','2',5) --CORRECT
+INSERT INTO customers (first_name,last_name,phone,email,street,city,country_state,zip_code)
+values ('Bob','Clarkson','+56534567','Bob_Clarskon@mail.com','Avery Str', 'NYC', 'USA','333311')
 
-USE Ivanov_pv24
-CREATE TABLE Sale(
-idSale int Primary key identity(1,1),
-idProduct int,
-idCustomer int,
-Count_pr int not null,
-Date_of_sale date,
-FOREIGN KEY (idProduct) REFERENCES Productn(idProduct),
-FOREIGN KEY (idCustomer) REFERENCES Customer(idCustomer),
-)
-INSERT INTO Sale (idProduct,idCustomer,Count_pr,Date_of_sale)
-values ('3','1','2','2026-04-22')
+INSERT INTO customers (first_name,last_name,phone,email,street,city,country_state,zip_code)
+values ('Abe','Schlachshwisse','+66534567','Abe_Schlaht@mail.com','Friedrieshain StraBe', 'Berlin', 'Germany','541823')
 
-INSERT INTO Sale (idProduct,idCustomer,Count_pr,Date_of_sale)
-values ('5','2','3','2026-03-13')
-
-CREATE TABLE Customer(
-idCustomer int PRIMARY KEY identity(1,1),
-Customer_name varchar(20),
-Contact varchar(32),
+USE Aleksei_Tund3
+CREATE TABLE stores(
+store_id int PRIMARY KEY IDENTITY(1,1),
+store_name varchar(20),
+phone Varchar (25),
+email Varchar (30),
+street Varchar (30),
+city Varchar (30),
+country_state Varchar (35),
+zip_code Varchar (10)
 )
 
-INSERT INTO Customer
-values ('John Johnson','Johny@super.mail.com')
-INSERT INTO Customer
-values ('Bob Williams','Bob@ultra.mail.com')
+INSERT INTO stores (store_name,phone,email,street,city,country_state,zip_code)
+values ('ZigZie','+4324234','Zigziesupport@mail.com','ostmark str','Kopenhagen','Denmark','34292')
+INSERT INTO stores (store_name,phone,email,street,city,country_state,zip_code)
+values ('Bennys','+3333234','Bennyshopping@mail.com','coal str','London','UK','32343')
+INSERT INTO stores (store_name,phone,email,street,city,country_state,zip_code)
+values ('Big&Bang','+543123423','bigbanglive@mail.com','bagguette str','Paris','France','99999')
+
+USE Aleksei_Tund3
+CREATE TABLE staffs(
+staff_id int PRIMARY KEY Identity(1,1),
+first_name Varchar(20),
+last_name Varchar (20),
+phone Varchar (25),
+email Varchar (30),
+active Varchar (10),
+store_id int,
+FOREIGN KEY (store_id) REFERENCES stores(store_id),
+manager_id Varchar (10),
+)
+
+USE Aleksei_Tund3
+CREATE TABLE orders(
+order_id int PRIMARY KEY Identity (1,1),
+customer_id int,
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+order_status varchar (10),
+order_date date,
+required_date date,
+shipped_date date,
+store_id int,
+staff_id int,
+FOREIGN KEY (store_id) REFERENCES stores(store_id),
+FOREIGN KEY (staff_id) REFERENCES staffs(staff_id)
+)
 
 
+USE Aleksei_Tund3
+CREATE TABLE order_items(
+order_id int,
+FOREIGN KEY (order_id) REFERENCES orders(order_id),
+item_id int PRIMARY KEY identity(1,1),
+product_id int,
+FOREIGN KEY (product_id) REFERENCES products(product_id),
+quantity varchar (10),
+list_price varchar (10),
+discount varchar(4),
+)
 
-select * FROM Category
-select * FROM Product
-select * FROM Sale
-select * FROM Customer
+USE Aleksei_Tund3
+CREATE TABLE categories(
+category_id int PRIMARY KEY identity (1,1),
+category_name varchar (10),
+)
+
+USE Aleksei_Tund3
+CREATE TABLE products(
+product_id int PRIMARY KEY Identity (1,1),
+product_name varchar (20),
+brand_id int,
+category_id int,
+FOREIGN KEY (brand_id) REFERENCES brands(brand_id),
+FOREIGN KEY (category_id) REFERENCES categories(category_id),
+model_year varchar (4),
+list_price varchar (10)
+)
+
+USE Aleksei_Tund3
+CREATE TABLE stocks(
+store_id int,
+product_id int,
+FOREIGN KEY (store_id) REFERENCES stores(store_id),
+FOREIGN KEY (product_id) REFERENCES products(product_id),
+quantity int
+)
+
+USE Aleksei_Tund3
+CREATE TABLE brands(
+brand_id int PRIMARY KEY IDENTITY (1,1),
+brand_name varchar (30)
+)
+
+select * FROM customers
+select * FROM orders
+select * FROM order_items
+select * FROM stores
+select * FROM staffs
+select * FROM categories
+select * FROM products
+select * FROM stocks
+select * FROM brands
+
