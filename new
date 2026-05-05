@@ -1,0 +1,187 @@
+USE Aleksei_Tund3
+
+-- Таблица customers (без изменений, работает корректно)
+CREATE TABLE customers(
+    customer_id int PRIMARY KEY IDENTITY(1,1),
+    first_name Varchar(20),
+    last_name Varchar(20),
+    phone Varchar(25),
+    email Varchar(30),
+    street Varchar(30),
+    city Varchar(30),
+    country_state Varchar(35),
+    zip_code Varchar(10)
+)
+
+INSERT INTO customers (first_name, last_name, phone, email, street, city, country_state, zip_code)
+VALUES 
+    ('John', 'Jackson', '+1234567', 'john_jackson@mail.com', 'Bakery Str', 'Austin', 'USA', '111111'),
+    ('Bob', 'Clarkson', '+56534567', 'Bob_Clarkson@mail.com', 'Avery Str', 'NYC', 'USA', '333311'),
+    ('Abe', 'Schlachshwisse', '+66534567', 'Abe_Schlaht@mail.com', 'Friedrieshain StraBe', 'Berlin', 'Germany', '541823'),
+    ('Maria', 'Gonzalez', '+34567890', 'maria.g@mail.com', 'Sunset Blvd', 'Los Angeles', 'USA', '90210'),
+    ('Hans', 'Mueller', '+491234567', 'hans.mueller@mail.de', 'Hauptstrasse 5', 'Munich', 'Germany', '80331')
+
+-- Таблица stores (без изменений)
+CREATE TABLE stores(
+    store_id int PRIMARY KEY IDENTITY(1,1),
+    store_name varchar(20),
+    phone Varchar(25),
+    email Varchar(30),
+    street Varchar(30),
+    city Varchar(30),
+    country_state Varchar(35),
+    zip_code Varchar(10)
+)
+
+INSERT INTO stores (store_name, phone, email, street, city, country_state, zip_code)
+VALUES 
+    ('ZigZie', '+4324234', 'Zigziesupport@mail.com', 'ostmark str', 'Kopenhagen', 'Denmark', '34292'),
+    ('Bennys', '+3333234', 'Bennyshopping@mail.com', 'coal str', 'London', 'UK', '32343'),
+    ('Big&Bang', '+543123423', 'bigbanglive@mail.com', 'bagguette str', 'Paris', 'France', '99999'),
+    ('TechWorld', '+4989123456', 'info@techworld.de', 'Neue Str 10', 'Berlin', 'Germany', '10115'),
+    ('FashionHub', '+442012345678', 'contact@fashionhub.co.uk', 'Oxford St', 'London', 'UK', 'W1D 1BS')
+
+-- Таблица brands (создана ДО products, так как products ссылается на brands)
+CREATE TABLE brands(
+    brand_id int PRIMARY KEY IDENTITY(1,1),
+    brand_name varchar(30)
+)
+
+INSERT INTO brands (brand_name)
+VALUES 
+    ('Nike'),
+    ('Adidas'),
+    ('Apple'),
+    ('Samsung'),
+    ('Sony')
+
+-- Таблица categories (без изменений, но увеличена длина названия)
+CREATE TABLE categories(
+    category_id int PRIMARY KEY IDENTITY(1,1),
+    category_name varchar(30)  -- Увеличено с 10 до 30
+)
+
+INSERT INTO categories (category_name)
+VALUES 
+    ('Electronics'),
+    ('Clothing'),
+    ('Shoes'),
+    ('Accessories'),
+    ('Sports')
+
+-- Таблица products (исправлен порядок - brands уже существует)
+CREATE TABLE products(
+    product_id int PRIMARY KEY IDENTITY(1,1),
+    product_name varchar(30),  -- Увеличено с 20 до 30
+    brand_id int,
+    category_id int,
+    FOREIGN KEY (brand_id) REFERENCES brands(brand_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    model_year varchar(4),
+    list_price decimal(10,2)  -- Изменено на DECIMAL для хранения валюты
+)
+
+INSERT INTO products (product_name, brand_id, category_id, model_year, list_price)
+VALUES 
+    ('Air Max 90', 1, 3, '2023', 129.99),
+    ('Ultraboost 22', 2, 3, '2024', 179.99),
+    ('iPhone 15', 3, 1, '2024', 999.99),
+    ('Galaxy S24', 4, 1, '2024', 899.99),
+    ('PS5 Controller', 5, 4, '2023', 69.99)
+
+-- Таблица staffs (исправлен тип данных manager_id)
+CREATE TABLE staffs(
+    staff_id int PRIMARY KEY IDENTITY(1,1),
+    first_name Varchar(20),
+    last_name Varchar(20),
+    phone Varchar(25),
+    email Varchar(30),
+    active Varchar(10),
+    store_id int,
+    FOREIGN KEY (store_id) REFERENCES stores(store_id),
+    manager_id int  -- Изменено с Varchar(10) на int, т.к. ссылается на staff_id
+)
+
+INSERT INTO staffs (first_name, last_name, phone, email, active, store_id, manager_id)
+VALUES 
+    ('Alice', 'Johnson', '+123456789', 'alice@zigzie.com', 'Yes', 1, NULL),
+    ('Bob', 'Smith', '+987654321', 'bob@zigzie.com', 'Yes', 1, 1),
+    ('Charlie', 'Brown', '+445566778', 'charlie@bennys.com', 'Yes', 2, NULL),
+    ('Diana', 'Prince', '+998877665', 'diana@bigbang.com', 'Yes', 3, NULL),
+    ('Eve', 'Adams', '+112233445', 'eve@techworld.com', 'No', 4, 3)
+
+-- Таблица orders (исправлен порядок - staffs уже существует)
+CREATE TABLE orders(
+    order_id int PRIMARY KEY IDENTITY(1,1),
+    customer_id int,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    order_status varchar(20),  -- Увеличено с 10 до 20
+    order_date date,
+    required_date date,
+    shipped_date date,
+    store_id int,
+    staff_id int,
+    currency_code char(3),  -- Добавлена валюта
+    FOREIGN KEY (store_id) REFERENCES stores(store_id),
+    FOREIGN KEY (staff_id) REFERENCES staffs(staff_id)
+)
+
+INSERT INTO orders (customer_id, order_status, order_date, required_date, shipped_date, store_id, staff_id, currency_code)
+VALUES 
+    (1, 'Shipped', '2024-01-15', '2024-01-20', '2024-01-18', 1, 1, 'USD'),
+    (2, 'Pending', '2024-02-10', '2024-02-15', NULL, 2, 3, 'GBP'),
+    (3, 'Delivered', '2024-01-05', '2024-01-12', '2024-01-10', 3, 4, 'EUR'),
+    (4, 'Processing', '2024-02-20', '2024-02-25', NULL, 4, 5, 'USD'),
+    (5, 'Cancelled', '2024-01-25', '2024-01-30', NULL, 1, 2, 'EUR')
+
+-- Таблица order_items (исправлен порядок - products уже существует)
+CREATE TABLE order_items(
+    order_id int,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    item_id int PRIMARY KEY IDENTITY(1,1),
+    product_id int,
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    quantity int,  -- Изменено с Varchar на int
+    list_price decimal(10,2),  -- Изменено на DECIMAL
+    discount decimal(5,2)  -- Изменено с Varchar(4) на DECIMAL для процентов скидки
+)
+
+INSERT INTO order_items (order_id, product_id, quantity, list_price, discount)
+VALUES 
+    (1, 1, 2, 129.99, 10.00),
+    (1, 3, 1, 999.99, 5.00),
+    (2, 2, 1, 179.99, 0.00),
+    (3, 4, 1, 899.99, 15.00),
+    (4, 5, 3, 69.99, 0.00),
+    (5, 1, 1, 129.99, 0.00)
+
+-- Таблица stocks (без изменений)
+CREATE TABLE stocks(
+    store_id int,
+    product_id int,
+    FOREIGN KEY (store_id) REFERENCES stores(store_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    quantity int
+)
+
+INSERT INTO stocks (store_id, product_id, quantity)
+VALUES 
+    (1, 1, 25),
+    (1, 2, 15),
+    (2, 1, 30),
+    (3, 3, 50),
+    (4, 4, 20),
+    (5, 5, 100),
+    (1, 3, 10),
+    (2, 2, 8)
+
+-- Просмотр всех таблиц
+SELECT * FROM customers
+SELECT * FROM stores
+SELECT * FROM brands
+SELECT * FROM categories
+SELECT * FROM products
+SELECT * FROM staffs
+SELECT * FROM orders
+SELECT * FROM order_items
+SELECT * FROM stocks
