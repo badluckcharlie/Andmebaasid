@@ -38,6 +38,8 @@ Päring - запрос
 - Üks-ühele (Nt naine-mees)
 - Üks-mitmele (Nt naine-lapsed)
 - Mitme-mitmele (Õpilased-Tunnid)
+  <img width="832" height="698" alt="image" src="https://github.com/user-attachments/assets/186a8c57-d87e-41bd-93da-c9be8bf06ad9" />
+
 ## ALTER TABLE - Tabeeli struktuuri muutmine
 ```sql
 --1. Uue veeru lisamine
