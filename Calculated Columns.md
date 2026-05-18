@@ -5,12 +5,12 @@ HOW TO CALCULATE:
 SELECT name, population / area FROM cities;
 
 
-| + - Add
-| - - Subtract
-| * - Multiply
-| / - Divide
++ - Add
+- - Subtract
+* - Multiply
+/ - Divide
 
-| ^ - Exponent
-| |/ - Square Root
-| @ - Absolute valute
-| % - Remainder
+^ - Exponent
+|/ - Square Root
+@ - Absolute valute
+% - Remainder
