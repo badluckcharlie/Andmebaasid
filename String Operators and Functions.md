@@ -16,5 +16,10 @@ TULEMUS:
 ## LISAME PAREM NIMI
 <img width="822" height="358" alt="image" src="https://github.com/user-attachments/assets/d9599c4f-2ba1-4082-bd31-b6ca1fce13d2" />
 
-##TULEMUS
+## TULEMUS
 <img width="248" height="136" alt="image" src="https://github.com/user-attachments/assets/e5df49af-d85a-450a-952a-3e183c0648a9" />
+
+## UPPER FUNCTION
+<img width="855" height="425" alt="image" src="https://github.com/user-attachments/assets/2f73e49c-9a62-4913-8d82-66e28a8639b4" />
+## TULEMUS
+<img width="755" height="415" alt="image" src="https://github.com/user-attachments/assets/0fa6c296-a2aa-43b1-ae3b-4ac56d288e08" />
