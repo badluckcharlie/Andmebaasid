@@ -4,7 +4,7 @@
 HOW TO CALCULATE:
 SELECT name, population / area FROM cities;
 
-
+## OPTIONS
 + - Add
 - - Subtract
 * - Multiply
