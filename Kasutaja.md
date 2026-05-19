@@ -27,6 +27,8 @@ GRANT UPDATE ON opilane TO DirectorIvanov2;
 
 DENY DELETE ON opilane TO DirectorIvanov2;
 ```
+
+
 ## Kasutaja õiguste kontroll
 Logime sisse meie uue kasutajana
 <img width="465" height="507" alt="{BE334670-79F0-4826-9829-275CEB866062}" src="https://github.com/user-attachments/assets/9c4b533e-bedb-4042-b2b7-155b41dad308" />
@@ -36,6 +38,12 @@ Vaatame mis meile lubatakse:
 
 Nüüd mis on keelatud:
 <img width="928" height="580" alt="{1FC7725B-D63E-48F6-8EF4-7335607E29DA}" src="https://github.com/user-attachments/assets/addf7f95-8dad-49b8-9dcd-7fe29b1aaa9b" />
+
+Vaatame õigused läbi SQL päring:
+<img width="555" height="499" alt="{6B6134DF-8768-4273-A904-9309CF5174A9}" src="https://github.com/user-attachments/assets/6bfd7388-f50e-45d1-badf-f4c8080d1334" />
+
+Nüüd läbi UI
+<img width="687" height="747" alt="{DDC496C9-9A5E-408B-A2CB-D6A7023CD94E}" src="https://github.com/user-attachments/assets/7860688b-dc82-4996-86dd-9cf3bcca7b83" />
 
 
 
