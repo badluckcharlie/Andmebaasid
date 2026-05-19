@@ -27,3 +27,12 @@ GRANT UPDATE ON opilane TO DirectorIvanov2;
 
 DENY DELETE ON opilane TO DirectorIvanov2;
 ```
+## Kasutaja õiguste kontroll
+Logime sisse meie uue kasutajana
+<img width="465" height="507" alt="{BE334670-79F0-4826-9829-275CEB866062}" src="https://github.com/user-attachments/assets/9c4b533e-bedb-4042-b2b7-155b41dad308" />
+
+Vaatame mis meile lubatakse:
+
+
+
+
