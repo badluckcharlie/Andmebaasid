@@ -32,6 +32,10 @@ Logime sisse meie uue kasutajana
 <img width="465" height="507" alt="{BE334670-79F0-4826-9829-275CEB866062}" src="https://github.com/user-attachments/assets/9c4b533e-bedb-4042-b2b7-155b41dad308" />
 
 Vaatame mis meile lubatakse:
+<img width="646" height="596" alt="{46334AFE-882C-4950-87EA-B8B978F2DF60}" src="https://github.com/user-attachments/assets/cabaf107-b141-44b6-917c-7767b6b6ca55" />
+
+Nüüd mis on keelatud:
+<img width="928" height="580" alt="{1FC7725B-D63E-48F6-8EF4-7335607E29DA}" src="https://github.com/user-attachments/assets/addf7f95-8dad-49b8-9dcd-7fe29b1aaa9b" />
 
 
 
