@@ -16,7 +16,7 @@ Tavaliselt piisab rollist: public
 
 ## LISAME ÕIGUSED Queriga
 
-'''sql 
+```sql 
 --GRANT -õiguste määramine
 --DENY -õiguste keelamine
 -- anname kasutajale õigus vaadata tabelit, lisada andmeid (SELECT),
@@ -26,4 +26,4 @@ GRANT INSERT ON opilane TO DirectorIvanov2;
 GRANT UPDATE ON opilane TO DirectorIvanov2;
 
 DENY DELETE ON opilane TO DirectorIvanov2;
-'''
+```
