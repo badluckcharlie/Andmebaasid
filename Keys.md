@@ -30,7 +30,7 @@ VALUES (1, 'Mari', 'Tamm', 'mari@example.com');
 
 SELECT * FROM tudengid;
 ```
-##Foreign Key (Võõrvõti)
+## Foreign Key (Võõrvõti)
 Definitsioon:
 Foreign Key (võõrvõti) on veerg või veergude kogum ühes tabelis, mis viitab teise tabeli PRIMARY KEY-le või UNIQUE KEY-le. See tagab andmete viitelise terviklikkuse.
 
@@ -61,7 +61,7 @@ VALUES (1, 1, 101, '2025-05-26');
 SELECT * FROM registreerimised;
 ```
 
-##Unique Key (Unikaalne võti)
+## Unique Key (Unikaalne võti)
 Definitsioon:
 Unique Key (unikaalne võti) on piirang, mis tagab, et kõik väärtused veerus või veergude rühmas on erinevad (unikaalsed). Erinevalt PRIMARY KEY-st võib lubada ühte NULL väärtust.
 
@@ -85,7 +85,7 @@ VALUES (1, 'Jaan', 'jaan@example.com');
 -- VALUES (2, 'Kati', 'jaan@example.com');
 ```
 
-##Simple Key (Lihtne võti)
+## Simple Key (Lihtne võti)
 Definitsioon:
 Simple Key (lihtne võti) on võti, mis koosneb ainult ühest veerust. See võib olla Primary Key, Foreign Key või Unique Key, kuid alati ainult ühest väljast.
 
@@ -107,7 +107,7 @@ VALUES ('T001', 'Sülearvuti', 750.00);
 SELECT * FROM tooted WHERE toote_kood = 'T001';
 ```
 
-Composite Key (Liitvõti)
+## Composite Key (Liitvõti)
 Definitsioon:
 Composite Key (liitvõti) on võti, mis koosneb kahest või enamast veerust. Koos tagavad need veerud rea unikaalsuse.
 
@@ -132,7 +132,7 @@ VALUES (1, 101, 'A');
 -- INSERT INTO hinded (tudengi_id, kursuse_id, hinne)
 -- VALUES (1, 101, 'B');
 ```
-Compound Key (Liitvõti – teine termin)
+## Compound Key (Liitvõti – teine termin)
 Definitsioon:
 Compound Key (liitvõti) – kasutatakse sageli Composite Key sünonüümina, kuid mõnes allikas tähendab see, et vähemalt üks veergudest on võõrvõti (Foreign Key).
 
@@ -158,7 +158,7 @@ CREATE TABLE tellimuse_read (
 );
 ```
 
-Superkey (Supervõti)
+## Superkey (Supervõti)
 Definitsioon:
 Superkey (supervõti) on ühe või mitme veeru kogum, mis identifitseerib rea unikaalselt. See võib sisaldada lisaveerge, mis pole unikaalsuse jaoks vajalikud.
 
@@ -181,7 +181,7 @@ CREATE TABLE tootajad (
 -- isikukood on supervõti
 ```
 
-Candidate Key (Kandidaatvõti)
+## Candidate Key (Kandidaatvõti)
 Definitsioon:
 Candidate Key (kandidaatvõti) on minimaalne supervõti – see tähendab veergude kogum, mis identifitseerib rea unikaalselt ja millest ei saa ühtegi veergu eemaldada ilma unikaalsust kaotamata.
 
@@ -204,7 +204,7 @@ CREATE TABLE kasutajad (
 -- Alternate Keys: kasutajanimi, email
 ```
 
-Alternate Key (Alternatiivvõti)
+## Alternate Key (Alternatiivvõti)
 Definitsioon:
 Alternate Key (alternatiivvõti) on Candidate Key, mida ei valitud PRIMARY KEY-ks. Kõik ülejäänud Candidate Key-d saavad Alternate Key-deks.
 
