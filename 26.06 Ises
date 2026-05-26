@@ -232,3 +232,24 @@ EXEC deletecaloryid 3;
 
 
 Select * from yhik, toiduaine
+
+GRANT SELECT on toiduaine TO staff_aleksei
+GRANT SELECT on kasutaja TO staff_aleksei
+GRANT SELECT on kategooria TO staff_aleksei
+
+GRANT INSERT on toiduaine to staff_aleksei
+GRANT INSERT on kategooria to staff_aleksei
+
+DENY UPDATE on kategooria to staff_aleksei
+DENY UPDATE on toiduaine to staff_aleksei
+
+--manager
+GRANT SELECT on toiduaine to manager_aleksei
+GRANT SELECT on kasutaja to manager_aleksei
+GRANT SELECT on kategooria to manager_aleksei
+GRANT SELECT on yhik to manager_aleksei
+GRANT SELECT on tehtud to manager_aleksei
+GRANT SELECT on calories to manager_aleksei
+
+DENY INSERT on toiduaine to manager_aleksei
+DENY INSERT on kasutaja to manager_aleksei
