@@ -129,32 +129,24 @@ GO
 
 
 CREATE PROCEDURE muudatus
-    @tegevus varchar(10),      -- 'add' or 'drop'
-    @tabelinimi varchar(50),   -- table name
-    @veerunimi varchar(50),    -- column name
-    @tyyp varchar(50) = NULL   -- data type (required for 'add')
+    @tegevus varchar(10),
+    @tabelinimi varchar(25),
+    @veerunimi varchar(25),
+    @tyyp varchar(25) = NULL
 AS
 BEGIN
-    DECLARE @sqltegevus nvarchar(4000);
-    
-    SET @sqltegevus = CASE
-        WHEN @tegevus = 'add' THEN
+    DECLARE @sqltegevus varchar(max);
+
+    SET @sqltegevus = CASE 
+        WHEN @tegevus = 'add' THEN 
             CONCAT('ALTER TABLE ', @tabelinimi, ' ADD ', @veerunimi, ' ', @tyyp)
-        WHEN @tegevus = 'drop' THEN
+
+        WHEN @tegevus = 'drop' THEN 
             CONCAT('ALTER TABLE ', @tabelinimi, ' DROP COLUMN ', @veerunimi)
-        ELSE
-            NULL
     END;
-    
-    IF @sqltegevus IS NOT NULL
-    BEGIN
-        PRINT @sqltegevus;
-        EXEC sp_executesql @sqltegevus;
-    END
-    ELSE
-    BEGIN
-        PRINT 'Invalid operation. Use ''add'' or ''drop''.';
-    END
+
+    PRINT @sqltegevus;
+    EXEC (@sqltegevus);
 END;
 
 
