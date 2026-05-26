@@ -1,0 +1,234 @@
+USE ivanov_retseptiraamat
+CREATE TABLE kasutaja(
+kasutaja_id int primary key identity(1,1),
+eesnimi varchar (50),
+perenimi varchar (50),
+email varchar(150))
+Select * from kasutaja;
+
+INSERT INTO kasutaja(eesnimi, perenimi, email)
+VALUES ('Aleksei', 'Ivanov', 'lexa@mail.com')
+INSERT INTO kasutaja(eesnimi, perenimi, email)
+VALUES ('Ivan', 'Alekseev', 'ivan@mail.com')
+INSERT INTO kasutaja(eesnimi, perenimi, email)
+VALUES ('Joe', 'Average', 'joe@mail.com')
+INSERT INTO kasutaja(eesnimi, perenimi, email)
+VALUES ('Bill', 'Clintwood', 'bill@mail.com')
+INSERT INTO kasutaja(eesnimi, perenimi, email)
+VALUES ('Tom', 'Woods', 'tom@mail.com')
+
+CREATE TABLE kategooria(
+kategooria_id int primary key identity(1,1),
+kagegooria_nimi varchar (50));
+Select * from kategooria;
+
+CREATE PROCEDURE lisauuskategooria
+@uusKategooria varchar(30)
+AS
+BEGIN
+    INSERT INTO kategooria(kagegooria_nimi)
+    VALUES (@uusKategooria);
+    SELECT * FROM kategooria;
+END
+
+EXEC lisauusKategooria 'Lõuna';
+EXEC lisauusKategooria 'Õhtusöök';
+EXEC lisauusKategooria 'Hommikusöök';
+EXEC lisauusKategooria 'Kiirtoit';
+EXEC lisauusKategooria 'Tervislik toitumine';
+
+CREATE PROCEDURE muudatus123
+    @tegevus varchar(10),
+    @tabelinimi varchar(25),
+    @veerunimi varchar(25),
+    @tyyp varchar(25) = NULL
+AS
+BEGIN
+    DECLARE @sqltegevus varchar(max);
+
+    SET @sqltegevus = CASE 
+        WHEN @tegevus = 'add' THEN 
+            CONCAT('ALTER TABLE ', @tabelinimi, ' ADD ', @veerunimi, ' ', @tyyp)
+
+        WHEN @tegevus = 'drop' THEN 
+            CONCAT('ALTER TABLE ', @tabelinimi, ' DROP COLUMN ', @veerunimi)
+    END;
+
+    PRINT @sqltegevus;
+    EXEC (@sqltegevus);
+END;
+
+-- veeru lisamine
+EXEC muudatus123
+    @tegevus='add', 
+    @tabelinimi='kino', 
+    @veerunimi='test', 
+    @tyyp='int';
+
+-- veeru kustutamine
+EXEC muudatus123
+    @tegevus='drop', 
+    @tabelinimi='kino', 
+    @veerunimi='test';
+
+
+Update kategooria set kagegooria_nimi= 'Lõuna'
+WHERE kategooria_id=1
+Update kategooria set kagegooria_nimi= 'Õhtusöök'
+WHERE kategooria_id=2
+Update kategooria set kagegooria_nimi= 'Hommikusöök'
+WHERE kategooria_id=3
+Update kategooria set kagegooria_nimi= 'Kiirtoit'
+WHERE kategooria_id=4
+Update kategooria set kagegooria_nimi= 'Tervislik toitumine'
+WHERE kategooria_id=5
+
+
+CREATE table toiduaine(
+toiduaine_id int primary key identity(1,1),
+toiduaine_nimi varchar(100));
+
+insert into toiduaine(toiduaine_nimi)
+values ('sealiha')
+insert into toiduaine(toiduaine_nimi)
+values ('kartul')
+insert into toiduaine(toiduaine_nimi)
+values ('oun')
+insert into toiduaine(toiduaine_nimi)
+values ('paprika pulber')
+insert into toiduaine(toiduaine_nimi)
+values ('mesi')
+
+SELECT * FROM toiduaine
+
+Create table yhik(
+yhik_id int primary key identity(1,1),
+yhik_nimi varchar(100));
+
+insert into yhik(yhik_nimi)
+values ('kg')
+
+insert into yhik(yhik_nimi)
+values ('gr')
+
+insert into yhik(yhik_nimi)
+values ('t')
+
+insert into yhik(yhik_nimi)
+values ('ml')
+
+insert into yhik(yhik_nimi)
+values ('l')
+
+insert into yhik(yhik_nimi)
+values ('kkcal')
+
+select * from yhik
+
+Create table retsept(
+retsept_id int primary key identity(1,1),
+retsepti_nimi varchar(100),
+kirjeldus varchar(200),
+juhend varchar(500),
+sisestatud_kp date,
+kasutaja_id int,
+FOREIGN KEY (kasutaja_id) REFERENCES kasutaja(kasutaja_id),
+kategooria_id int,
+FOREIGN KEY (kategooria_id) REFERENCES kategooria(kategooria_id));
+
+insert into retsept(retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+values ('Suur pihv', 'Suure pihvi retsept, väga lihane ja maitsev', 'Pandke sealiha hakkliha pannide peale','2024-2-2', 1, 1)
+DELETE FROM retsept WHERE retsept_id = 1;
+insert into retsept(retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+values ('Microware Kartul', 'Kartul mis on valmis söömiks 15 minuti jooksul', 'Pandke kartulid microahju sisse ja sisestage 15 min','2025-3-3', 2, 2)
+insert into retsept(retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+values ('Puhas oun', 'Ilus ja puhas oun söömiseks', 'Tehke oma oun puhtaks kraaniveega','2026-4-4', 3, 3)
+insert into retsept(retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+values ('Sööme mesi', 'Kuidas mesi süüatakse', 'Tehke mesi lahti ja võtke luusikas','2023-12-11', 4, 4)
+insert into retsept(retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+values ('Keedetud kartul', 'Maitsev kartul teie laua peal', 'Keetke kartul 40 minutit','2022-10-11', 5, 5)
+
+select * from retsept
+
+Create table koostis(
+koostis_id int primary key identity(1,1),
+kogus int,
+retsept_retsept_id int,
+FOREIGN KEY (retsept_retsept_id) REFERENCES retsept(retsept_id),
+toiduaine_id int,
+FOREIGN KEY (toiduaine_id) REFERENCES toiduaine(toiduaine_id),
+yhik_id int,
+FOREIGN key (yhik_id) REFERENCES yhik(yhik_id));
+
+insert into koostis (kogus, retsept_retsept_id, toiduaine_id, yhik_id)
+values (1, 2, 1, 1)
+insert into koostis (kogus, retsept_retsept_id, toiduaine_id, yhik_id)
+values (1, 2, 2, 1)
+insert into koostis (kogus, retsept_retsept_id, toiduaine_id, yhik_id)
+values (100, 3, 3, 2)
+insert into koostis (kogus, retsept_retsept_id, toiduaine_id, yhik_id)
+values (500, 4, 5, 4)
+insert into koostis (kogus, retsept_retsept_id, toiduaine_id, yhik_id)
+values (800, 5, 2, 2)
+
+
+select * from koostis
+
+Create table tehtud(
+tehtud_id int primary key identity(1,1),
+tehtud_kp date,
+retsept_id int,
+Foreign Key (retsept_id) REFERENCES retsept(retsept_id));
+
+insert into tehtud(tehtud_kp, retsept_id)
+values ('2026-10-10', 2)
+insert into tehtud(tehtud_kp, retsept_id)
+values ('2026-9-9', 3)
+insert into tehtud(tehtud_kp, retsept_id)
+values ('2025-7-7', 4)
+insert into tehtud(tehtud_kp, retsept_id)
+values ('2026-10-10', 5)
+insert into tehtud(tehtud_kp, retsept_id)
+values ('2026-11-10', 6)
+
+select * from tehtud
+
+select * from tehtud, koostis, toiduaine -- Näitab meile mis me oleme teinud ja mida kasutasime, ja millal
+--omaselect
+select CONCAT(UPPER(retsepti_nimi),' - ', (juhend)) as 'lühendatud otsing' from retsept;
+--töötab nagu kiirotsing, näitab suure tähega retseptinimi ja juhend 
+--omatabel
+create table calories(
+kalorid int,
+toiduaine_id int
+FOREIGN key (toiduaine_id) REFERENCES toiduaine(toiduaine_id),
+yhik_id int,
+FOREIGN key (yhik_id) REFERENCES yhik(yhik_id));
+
+CREATE PROCEDURE addcalory
+@newcalory int,
+@toiduaineid varchar (30),
+@yhikid int
+AS
+BEGIN
+    INSERT INTO calories(kalorid, toiduaine_id, yhik_id)
+    VALUES (@newcalory, @toiduaineid, @yhikid);
+    SELECT * FROM calories;
+END;
+
+EXEC addcalory 100,3,6;
+
+Create procedure deletecaloryid
+@idtodelete int
+AS
+BEGIN
+	DELETE FROM calories Where toiduaine_id = @idtodelete;
+	SELECT * FROM calories;
+END;
+
+EXEC deletecaloryid 3;
+
+
+
+
+Select * from yhik, toiduaine
