@@ -177,6 +177,8 @@ CREATE TABLE tellimuse_read (
 
 <img width="494" height="119" alt="{1C494D1E-C643-474F-BE3A-440D8AE4D2C5}" src="https://github.com/user-attachments/assets/d9008fbf-feaf-451e-9b55-31c5442e72a5" />
 
+<img width="305" height="455" alt="{53E4A232-F3CA-414D-BC4B-E4CC3ECF9C78}" src="https://github.com/user-attachments/assets/1c4286a9-9827-4598-82cf-9890a10afbfb" />
+
 
 ## Superkey (Supervoti)
 Definitsioon:
@@ -253,6 +255,8 @@ SELECT * FROM kasutajad_alternate WHERE kasutajanimi = 'mari_tamm';
 ```
 
 <img width="465" height="120" alt="{578DD86D-04F6-436F-91ED-4D525FC50CE4}" src="https://github.com/user-attachments/assets/6efa3ade-8dc3-41d9-af3f-e700009d69b8" />
+
+<img width="321" height="418" alt="{310888B7-C34D-46B0-872D-886116C07733}" src="https://github.com/user-attachments/assets/d7d212a2-e646-4a4e-b2c2-d60ebe1c4737" />
 
 
 ## Allikad
