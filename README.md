@@ -1,3 +1,6 @@
+## Aleksei - Andmebaaside konspekt
+
+[Põhimõisted](README.md) | [Kasutajad](kasutaja.md) | [Trigerid](Triger.md) | [Protseduurid](procedure.md) |[Võtmed](keys.md) | [Arvestatud tulpid](CalculatedColums.md) 
 ## SISUKORD
 - [Põhimõisted](#põhimõisted)
 - [Piiragnud](#piiragnud)
