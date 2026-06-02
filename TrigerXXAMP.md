@@ -49,6 +49,8 @@
 
 <img width="1317" height="934" alt="{C1477719-860B-4E8F-87B4-9A16AB9C3A9A}" src="https://github.com/user-attachments/assets/ae80e10b-1703-4b06-80af-996614c22774" />
 
+<img width="1332" height="502" alt="{3E1885D0-AFDD-44F1-8F5D-3FA1736E0C2E}" src="https://github.com/user-attachments/assets/bd440c4d-35bd-46c8-a07e-1cb42954b16f" />
+
 
 Õige!
 
