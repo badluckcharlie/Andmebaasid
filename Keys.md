@@ -6,17 +6,17 @@
 
 ## Sissejuhatus
 
-See fail selgitab erinevaid votmetuupe relatsioonilistes andmebaasides koos praktiliste SQL-naidete ja ekraanipiltidega.
+See fail selgitab erinevaid võtmetuupe relatsioonilistes andmebaasides koos praktiliste SQL-naidete ja ekraanipiltidega.
 
 ## 1. Primary Key (Primaarvõti)
 
 **Definitsioon:**  
-Primary Key (primaarvoti) on veerg (voi veergude kogum), mis identifitseerib igat rida tabelis unikaalselt. See ei voi sisaldada NULL vaartusi ja peab olema iga kirje jaoks kordumatu.
+Primary Key (primaarvõti) on veerg (voi veergude kogum), mis identifitseerib igat rida tabelis unikaalselt. See ei voi sisaldada NULL vaartusi ja peab olema iga kirje jaoks kordumatu.
 
 **Milleks kasutatakse:**  
 Kirjete unikaalsuse tagamiseks, kiireks otsimiseks ja seoste loomiseks teiste tabelitega.
 
-**Erinevus teistest votmetest:**  
+**Erinevus teistest võtmetest:**  
 Erinevalt Foreign Key-st on see unikaalne ega saa olla NULL. Erinevalt Unique Key-st voib tabelis olla ainult uks Primary Key ja seda kasutatakse peamise identifikaatorina.
 
 ### Praktiline naide (SQL)
@@ -40,13 +40,13 @@ SELECT * FROM tudengid;
 
 ## Foreign Key (Voorvõti)
 Definitsioon:
-Foreign Key (voorvoti) on veerg voi veergude kogum uhes tabelis, mis viitab teise tabeli PRIMARY KEY-le voi UNIQUE KEY-le. See tagab andmete viitelise terviklikkuse.
+Foreign Key (voorvõti) on veerg voi veergude kogum uhes tabelis, mis viitab teise tabeli PRIMARY KEY-le voi UNIQUE KEY-le. See tagab andmete viitelise terviklikkuse.
 
 **Milleks kasutatakse:**
 Seoste loomiseks tabelite vahel (uks-mitmele, mitu-mitmele) ja toimingute takistamiseks, mis voiksid neid seoseid rikkuda.
 
-**Erinevus teistest votmetest:**
-Erinevalt Primary Key-st voib Foreign Key sisaldada dubleerivaid ja NULL vaartusi. See viitab alati olemasolevale votmele teises tabelis.
+**Erinevus teistest võtmetest:**
+Erinevalt Primary Key-st voib Foreign Key sisaldada dubleerivaid ja NULL vaartusi. See viitab alati olemasolevale võtmele teises tabelis.
 
 ```sql
 CREATE TABLE kursused (
@@ -74,12 +74,12 @@ SELECT * FROM registreerimised;
 
 ## Unique Key (Unikaalne võti)
 Definitsioon:
-Unique Key (unikaalne voti) on piirang, mis tagab, et koik vaartused veerus voi veergude ruhmas on erinevad (unikaalsed). Erinevalt PRIMARY KEY-st voib lubada uhte NULL vaartust.
+Unique Key (unikaalne võti) on piirang, mis tagab, et koik vaartused veerus voi veergude ruhmas on erinevad (unikaalsed). Erinevalt PRIMARY KEY-st voib lubada uhte NULL vaartust.
 
 **EMilleks kasutatakse:**E
-Andmete dubleerimise valtimiseks veergudes, mis ei ole primaarvotmed (nt e-post voi isikukood).
+Andmete dubleerimise valtimiseks veergudes, mis ei ole primaarvõtmed (nt e-post voi isikukood).
 
-**EErinevus teistest votmetest:**E
+**EErinevus teistest võtmetest:**E
 Erinevalt Primary Key-st voib olla NULL ja tabelis voib olla mitu Unique Key-d. Erinevalt Foreign Key-st ei viita see teisele tabelile.
 ```sql
 CREATE TABLE tudengid_unique (
@@ -101,7 +101,7 @@ VALUES (1, 'Jaan', 'jaan@example.com');
 
 ## Simple Key (Lihtne võti)
 Definitsioon:
-Simple Key (lihtne voti) on voti, mis koosneb ainult uhest veerust. See voib olla Primary Key, Foreign Key voi Unique Key, kuid alati ainult uhest valjast.
+Simple Key (lihtne võti) on võti, mis koosneb ainult uhest veerust. See voib olla Primary Key, Foreign Key voi Unique Key, kuid alati ainult uhest valjast.
 
 **Milleks kasutatakse:**
 Kirjete lihtsaks identifitseerimiseks, kui uhest atribuudist piisab koigi ridade eristamiseks.
@@ -126,13 +126,13 @@ SELECT * FROM tooted WHERE toote_kood = 'T001';
 
 ## Composite Key (Liitvõti)
 Definitsioon:
-Composite Key (liitvoti) on voti, mis koosneb kahest voi enamast veerust. Koos tagavad need veerud rea unikaalsuse.
+Composite Key (liitvõti) on võti, mis koosneb kahest voi enamast veerust. Koos tagavad need veerud rea unikaalsuse.
 
 Milleks kasutatakse:
 Kui ukski veerg eraldi ei suuda rida unikaalselt identifitseerida, aga veergude kombinatsioon suudab. Sageli kasutatakse "mitu-mitmele" seose tabelites.
 
-Erinevus teistest votmetest:
-Erinevalt Simple Key-st kasutab mitut veergu. Erinevalt Compound Key-st ei sisalda tavaliselt voorvotmeid (kuigi piir on hagune).
+Erinevus teistest võtmetest:
+Erinevalt Simple Key-st kasutab mitut veergu. Erinevalt Compound Key-st ei sisalda tavaliselt voorvõtmeid (kuigi piir on hagune).
 
 ```sql
 CREATE TABLE hinded (
@@ -155,12 +155,12 @@ VALUES (1, 101, 'A');
 
 ## Compound Key (Liitvõti – teine termin)
 Definitsioon:
-Compound Key (liitvoti) – kasutatakse sageli Composite Key sunonuumina, kuid mones allikas tahendab see, et vahemalt uks veergudest on voorvoti (Foreign Key).
+Compound Key (liitvõti) – kasutatakse sageli Composite Key sunonuumina, kuid mones allikas tahendab see, et vahemalt uks veergudest on voorvõti (Foreign Key).
 
 Milleks kasutatakse:
-Unikaalse identifitseerimise loomiseks seosetabelites, kus iga veerg viitab teiste tabelite primaarvotmetele.
+Unikaalse identifitseerimise loomiseks seosetabelites, kus iga veerg viitab teiste tabelite primaarvõtmetele.
 
-Erinevus teistest votmetest:
+Erinevus teistest võtmetest:
 Tehniliselt vaga sarnane Composite Key-ga, kuid rohk on sellel, et koostisosad on tavaliselt FOREIGN KEY-d.
 
 ```sql
@@ -186,13 +186,13 @@ CREATE TABLE tellimuse_read (
 
 ## Superkey (Supervõti)
 Definitsioon:
-Superkey (supervoti) on uhe voi mitme veeru kogum, mis identifitseerib rea unikaalselt. See voib sisaldada lisaveerge, mis pole unikaalsuse jaoks vajalikud.
+Superkey (supervõti) on uhe voi mitme veeru kogum, mis identifitseerib rea unikaalselt. See voib sisaldada lisaveerge, mis pole unikaalsuse jaoks vajalikud.
 
 Milleks kasutatakse:
-See on teoreetiline moiste andmebaaside normaliseerimisel. Iga voti (Primary, Candidate) on supervoti, kuid mitte vastupidi.
+See on teoreetiline moiste andmebaaside normaliseerimisel. Iga võti (Primary, Candidate) on supervõti, kuid mitte vastupidi.
 
-Erinevus teistest votmetest:
-Superkey voib olla uleliigne. Naiteks {tudengi_id, perenimi} on supervoti, isegi kui perenimi pole unikaalsuse jaoks vajalik.
+Erinevus teistest võtmetest:
+Superkey voib olla uleliigne. Naiteks {tudengi_id, perenimi} on supervõti, isegi kui perenimi pole unikaalsuse jaoks vajalik.
 
 ```sql
 CREATE TABLE tootajad (
@@ -202,9 +202,9 @@ CREATE TABLE tootajad (
     perenimi VARCHAR(50)
 );
 
--- tootaja_id on supervoti (minimaalne -> Candidate)
--- (tootaja_id, eesnimi) on samuti supervoti (uleliigne)
--- isikukood on supervoti
+-- tootaja_id on supervõti (minimaalne -> Candidate)
+-- (tootaja_id, eesnimi) on samuti supervõti (uleliigne)
+-- isikukood on supervõti
 ```
 
 <img width="264" height="122" alt="{1916500B-517F-4167-95F5-5E8017F13C86}" src="https://github.com/user-attachments/assets/a0b805b8-98cc-49ce-a9f0-98957b044dd7" />
@@ -212,12 +212,12 @@ CREATE TABLE tootajad (
 
 ## Candidate Key (Kandidaatvõti)
 Definitsioon:
-Candidate Key (kandidaatvoti) on minimaalne supervoti – see tahendab veergude kogum, mis identifitseerib rea unikaalselt ja millest ei saa uhtegi veergu eemaldada ilma unikaalsust kaotamata.
+Candidate Key (kandidaatvõti) on minimaalne supervõti – see tahendab veergude kogum, mis identifitseerib rea unikaalselt ja millest ei saa uhtegi veergu eemaldada ilma unikaalsust kaotamata.
 
 Milleks kasutatakse:
 Hulgast Candidate Key-dest valitakse uks PRIMARY KEY-ks ja ulejaanud saavad ALTERNATE KEY-deks.
 
-Erinevus teistest votmetest:
+Erinevus teistest võtmetest:
 Erinevalt Superkey-st ei sisalda Candidate Key lisaveerge. Erinevalt Primary Key-st voib neid olla mitu ja ainult uhest saab Primary.
 
 ```sql
@@ -238,12 +238,12 @@ CREATE TABLE kasutajad (
 
 ## Alternate Key (Alternatiivvõti)
 Definitsioon:
-Alternate Key (alternatiivvoti) on Candidate Key, mida ei valitud PRIMARY KEY-ks. Koik ulejaanud Candidate Key-d saavad Alternate Key-deks.
+Alternate Key (alternatiivvõti) on Candidate Key, mida ei valitud PRIMARY KEY-ks. Koik ulejaanud Candidate Key-d saavad Alternate Key-deks.
 
 Milleks kasutatakse:
 Alternatiivse unikaalse identifitseerimisviisi pakkumiseks (nt otsimine e-posti, mitte ID jargi).
 
-Erinevus teistest votmetest:
+Erinevus teistest võtmetest:
 See on Candidate Key alamhulk. Erinevalt Primary Key-st voib neid olla mitu. Erinevalt Foreign Key-st ei viita see teisele tabelile.
 
 ```sql
