@@ -2,13 +2,13 @@
 [Põhimõisted](README.md) | [Kasutajad](Kasutaja.md) | [Trigerid](Triger.md) | [Protseduurid](procedure.md) | [Võtmed](Keys.md) | [Arvestatud veerud](CalculatedColumns.md) | [Funktsioonid](StringOperatorsandFunctions.md) | [Alter Table](Tund2Alter.md) | [XAMPP - Trigerid ja kasutajad](TrigerXXAMP.md)
 
 
-# Andmebaasi votmed (Keys)
+# Andmebaasi võtmed (Keys)
 
 ## Sissejuhatus
 
 See fail selgitab erinevaid votmetuupe relatsioonilistes andmebaasides koos praktiliste SQL-naidete ja ekraanipiltidega.
 
-## 1. Primary Key (Primaarvoti)
+## 1. Primary Key (Primaarvõti)
 
 **Definitsioon:**  
 Primary Key (primaarvoti) on veerg (voi veergude kogum), mis identifitseerib igat rida tabelis unikaalselt. See ei voi sisaldada NULL vaartusi ja peab olema iga kirje jaoks kordumatu.
@@ -38,7 +38,7 @@ SELECT * FROM tudengid;
 <img width="492" height="352" alt="{29CFC28A-6C74-40F5-9A58-FC99FB856C0B}" src="https://github.com/user-attachments/assets/b0880628-bcb1-4331-a6e2-5db627021a4b" />
 
 
-## Foreign Key (Voorvoti)
+## Foreign Key (Voorvõti)
 Definitsioon:
 Foreign Key (voorvoti) on veerg voi veergude kogum uhes tabelis, mis viitab teise tabeli PRIMARY KEY-le voi UNIQUE KEY-le. See tagab andmete viitelise terviklikkuse.
 
@@ -72,7 +72,7 @@ SELECT * FROM registreerimised;
 <img width="527" height="225" alt="{BB14D320-C578-4B24-8075-1F0B02760BFC}" src="https://github.com/user-attachments/assets/80c63b10-492a-405b-9b42-d842273ace43" />
 
 
-## Unique Key (Unikaalne voti)
+## Unique Key (Unikaalne võti)
 Definitsioon:
 Unique Key (unikaalne voti) on piirang, mis tagab, et koik vaartused veerus voi veergude ruhmas on erinevad (unikaalsed). Erinevalt PRIMARY KEY-st voib lubada uhte NULL vaartust.
 
@@ -99,14 +99,14 @@ VALUES (1, 'Jaan', 'jaan@example.com');
 <img width="416" height="139" alt="{17773CE4-3C5F-486B-8A62-9987A316AA03}" src="https://github.com/user-attachments/assets/918de088-9c75-40c2-ad44-1d77ba57d4c9" />
 
 
-## Simple Key (Lihtne voti)
+## Simple Key (Lihtne võti)
 Definitsioon:
 Simple Key (lihtne voti) on voti, mis koosneb ainult uhest veerust. See voib olla Primary Key, Foreign Key voi Unique Key, kuid alati ainult uhest valjast.
 
 **Milleks kasutatakse:**
 Kirjete lihtsaks identifitseerimiseks, kui uhest atribuudist piisab koigi ridade eristamiseks.
 
-**Erinevus teistest votmetest:**
+**Erinevus teistest võtmetest:**
 Peamine erinevus on see, et see kasutab ainult uhte veergu, samas kui Composite ja Compound Key kasutavad mitut veergu.
 ```sql
 CREATE TABLE tooted (
@@ -124,7 +124,7 @@ SELECT * FROM tooted WHERE toote_kood = 'T001';
 <img width="427" height="324" alt="{B8484089-631D-4342-9E46-5E3D026E63E0}" src="https://github.com/user-attachments/assets/d229716f-2016-426e-bb0e-ab02a788ecdf" />
 
 
-## Composite Key (Liitvoti)
+## Composite Key (Liitvõti)
 Definitsioon:
 Composite Key (liitvoti) on voti, mis koosneb kahest voi enamast veerust. Koos tagavad need veerud rea unikaalsuse.
 
@@ -153,7 +153,7 @@ VALUES (1, 101, 'A');
 <img width="442" height="180" alt="{7E90777F-A389-4BAA-A453-726077955E53}" src="https://github.com/user-attachments/assets/311f0096-d9ba-4d82-8941-4723a71efe2c" />
 
 
-## Compound Key (Liitvoti – teine termin)
+## Compound Key (Liitvõti – teine termin)
 Definitsioon:
 Compound Key (liitvoti) – kasutatakse sageli Composite Key sunonuumina, kuid mones allikas tahendab see, et vahemalt uks veergudest on voorvoti (Foreign Key).
 
@@ -184,7 +184,7 @@ CREATE TABLE tellimuse_read (
 <img width="305" height="455" alt="{53E4A232-F3CA-414D-BC4B-E4CC3ECF9C78}" src="https://github.com/user-attachments/assets/1c4286a9-9827-4598-82cf-9890a10afbfb" />
 
 
-## Superkey (Supervoti)
+## Superkey (Supervõti)
 Definitsioon:
 Superkey (supervoti) on uhe voi mitme veeru kogum, mis identifitseerib rea unikaalselt. See voib sisaldada lisaveerge, mis pole unikaalsuse jaoks vajalikud.
 
@@ -210,7 +210,7 @@ CREATE TABLE tootajad (
 <img width="264" height="122" alt="{1916500B-517F-4167-95F5-5E8017F13C86}" src="https://github.com/user-attachments/assets/a0b805b8-98cc-49ce-a9f0-98957b044dd7" />
 
 
-## Candidate Key (Kandidaatvoti)
+## Candidate Key (Kandidaatvõti)
 Definitsioon:
 Candidate Key (kandidaatvoti) on minimaalne supervoti – see tahendab veergude kogum, mis identifitseerib rea unikaalselt ja millest ei saa uhtegi veergu eemaldada ilma unikaalsust kaotamata.
 
@@ -236,7 +236,7 @@ CREATE TABLE kasutajad (
 <img width="566" height="111" alt="{EC4BBFD1-470B-4EB0-979D-FE2FCC3629FD}" src="https://github.com/user-attachments/assets/d5d74228-9218-4db9-a7b8-dea026c37716" />
 
 
-## Alternate Key (Alternatiivvoti)
+## Alternate Key (Alternatiivvõti)
 Definitsioon:
 Alternate Key (alternatiivvoti) on Candidate Key, mida ei valitud PRIMARY KEY-ks. Koik ulejaanud Candidate Key-d saavad Alternate Key-deks.
 
