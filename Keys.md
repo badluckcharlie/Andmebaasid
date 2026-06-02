@@ -158,6 +158,9 @@ CREATE TABLE tellimuse_read (
 );
 ```
 
+<img width="494" height="119" alt="{1C494D1E-C643-474F-BE3A-440D8AE4D2C5}" src="https://github.com/user-attachments/assets/d9008fbf-feaf-451e-9b55-31c5442e72a5" />
+
+
 ## Superkey (Supervoti)
 Definitsioon:
 Superkey (supervoti) on uhe voi mitme veeru kogum, mis identifitseerib rea unikaalselt. See voib sisaldada lisaveerge, mis pole unikaalsuse jaoks vajalikud.
@@ -180,6 +183,9 @@ CREATE TABLE tootajad (
 -- (tootaja_id, eesnimi) on samuti supervoti (uleliigne)
 -- isikukood on supervoti
 ```
+
+<img width="264" height="122" alt="{1916500B-517F-4167-95F5-5E8017F13C86}" src="https://github.com/user-attachments/assets/a0b805b8-98cc-49ce-a9f0-98957b044dd7" />
+
 
 ## Candidate Key (Kandidaatvoti)
 Definitsioon:
@@ -204,6 +210,9 @@ CREATE TABLE kasutajad (
 -- Alternate Keys: kasutajanimi, email
 ```
 
+<img width="566" height="111" alt="{EC4BBFD1-470B-4EB0-979D-FE2FCC3629FD}" src="https://github.com/user-attachments/assets/d5d74228-9218-4db9-a7b8-dea026c37716" />
+
+
 ## Alternate Key (Alternatiivvoti)
 Definitsioon:
 Alternate Key (alternatiivvoti) on Candidate Key, mida ei valitud PRIMARY KEY-ks. Koik ulejaanud Candidate Key-d saavad Alternate Key-deks.
@@ -225,6 +234,8 @@ CREATE TABLE kasutajad_alternate (
 -- Otsing Alternate Key jargi
 SELECT * FROM kasutajad_alternate WHERE kasutajanimi = 'mari_tamm';
 ```
+
+<img width="465" height="120" alt="{578DD86D-04F6-436F-91ED-4D525FC50CE4}" src="https://github.com/user-attachments/assets/6efa3ade-8dc3-41d9-af3f-e700009d69b8" />
 
 
 ## Allikad
