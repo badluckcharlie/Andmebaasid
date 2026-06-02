@@ -5,7 +5,7 @@
 
 ## Sissejuhatus
 
-See fail selgitab erinevaid võtmetuupe relatsioonilistes andmebaasides koos praktiliste SQL-naidete ja ekraanipiltidega.
+See fail selgitab erinevaid võtmetüüpe relatsioonilistes andmebaasides koos praktiliste SQL-näidete ja ekraanipiltidega.
 
 ## 1. Primary Key (Primaarvõti)
 
