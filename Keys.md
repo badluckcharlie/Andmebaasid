@@ -37,7 +37,7 @@ SELECT * FROM tudengid;
 <img width="492" height="352" alt="{29CFC28A-6C74-40F5-9A58-FC99FB856C0B}" src="https://github.com/user-attachments/assets/b0880628-bcb1-4331-a6e2-5db627021a4b" />
 
 
-## Foreign Key (võorvõti)
+## Foreign Key (võõrvõti)
 Definitsioon:
 Foreign Key (võorvõti) on veerg või veergude kogum uhes tabelis, mis viitab teise tabeli PRIMARY KEY-le või UNIQUE KEY-le. See tagab andmete viitelise terviklikkuse.
 
