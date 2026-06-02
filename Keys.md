@@ -30,6 +30,10 @@ VALUES (1, 'Mari', 'Tamm', 'mari@example.com');
 
 SELECT * FROM tudengid;
 ```
+
+<img width="492" height="352" alt="{29CFC28A-6C74-40F5-9A58-FC99FB856C0B}" src="https://github.com/user-attachments/assets/b0880628-bcb1-4331-a6e2-5db627021a4b" />
+
+
 ## Foreign Key (Voorvoti)
 Definitsioon:
 Foreign Key (voorvoti) on veerg voi veergude kogum uhes tabelis, mis viitab teise tabeli PRIMARY KEY-le voi UNIQUE KEY-le. See tagab andmete viitelise terviklikkuse.
@@ -61,6 +65,9 @@ VALUES (1, 1, 101, '2025-05-26');
 SELECT * FROM registreerimised;
 ```
 
+<img width="527" height="225" alt="{BB14D320-C578-4B24-8075-1F0B02760BFC}" src="https://github.com/user-attachments/assets/80c63b10-492a-405b-9b42-d842273ace43" />
+
+
 ## Unique Key (Unikaalne voti)
 Definitsioon:
 Unique Key (unikaalne voti) on piirang, mis tagab, et koik vaartused veerus voi veergude ruhmas on erinevad (unikaalsed). Erinevalt PRIMARY KEY-st voib lubada uhte NULL vaartust.
@@ -85,6 +92,9 @@ VALUES (1, 'Jaan', 'jaan@example.com');
 -- VALUES (2, 'Kati', 'jaan@example.com');
 ```
 
+<img width="416" height="139" alt="{17773CE4-3C5F-486B-8A62-9987A316AA03}" src="https://github.com/user-attachments/assets/918de088-9c75-40c2-ad44-1d77ba57d4c9" />
+
+
 ## Simple Key (Lihtne voti)
 Definitsioon:
 Simple Key (lihtne voti) on voti, mis koosneb ainult uhest veerust. See voib olla Primary Key, Foreign Key voi Unique Key, kuid alati ainult uhest valjast.
@@ -106,6 +116,9 @@ VALUES ('T001', 'Sulearvuti', 750.00);
 
 SELECT * FROM tooted WHERE toote_kood = 'T001';
 ```
+
+<img width="427" height="324" alt="{B8484089-631D-4342-9E46-5E3D026E63E0}" src="https://github.com/user-attachments/assets/d229716f-2016-426e-bb0e-ab02a788ecdf" />
+
 
 ## Composite Key (Liitvoti)
 Definitsioon:
@@ -132,6 +145,10 @@ VALUES (1, 101, 'A');
 -- INSERT INTO hinded (tudengi_id, kursuse_id, hinne)
 -- VALUES (1, 101, 'B');
 ```
+
+<img width="442" height="180" alt="{7E90777F-A389-4BAA-A453-726077955E53}" src="https://github.com/user-attachments/assets/311f0096-d9ba-4d82-8941-4723a71efe2c" />
+
+
 ## Compound Key (Liitvoti – teine termin)
 Definitsioon:
 Compound Key (liitvoti) – kasutatakse sageli Composite Key sunonuumina, kuid mones allikas tahendab see, et vahemalt uks veergudest on voorvoti (Foreign Key).
