@@ -14,6 +14,7 @@ BEGIN
 	VALUES ('@uuskategooria');
 	SELECT * FROM categories;
 END;
+
 <img width="236" height="380" alt="{9E0BA8B8-12B1-40B2-A40F-0D0D21E16AAF}" src="https://github.com/user-attachments/assets/631550a0-9de9-4306-a0ad-0fa49f8b3482" />
 
 --protseduur, mis kustutab kategooria 
@@ -27,6 +28,7 @@ BEGIN
 END
 --kutse
 EXEC kustutaKategooria 6
+
 <img width="466" height="410" alt="{70A63F6B-B4AA-4AA6-85EF-C25670AB9E49}" src="https://github.com/user-attachments/assets/a8e241eb-942f-4ae7-a7db-71557c894372" />
 
 --protseduur mis kuvab kategooriad sisestatud esimese tähe järgi
@@ -39,6 +41,7 @@ BEGIN
 END
 
 EXEC otsing1taht 'A';
+
 <img width="513" height="317" alt="{5347EE78-1716-4E2E-99D7-3F72CE04C5D4}" src="https://github.com/user-attachments/assets/4b4a0034-4dd5-43e7-9f61-d22adbd21dba" />
 
 
