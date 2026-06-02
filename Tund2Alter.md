@@ -1,3 +1,4 @@
+```sql
 USE Ivanov_pv24
 CREATE TABLE tootaja(
 tootajaID int PRIMARY KEY identity(1,1), --identity - automaatselt kasvav arv +1
@@ -75,3 +76,4 @@ SELECT * FROM tootaja
 SELECT * FROM ryhm
 UPDATE ryhm SET ryhmajuhataja=2 WHERE ryhmnimi='LOGITpv24'
 UPDATE ryhm SET ryhmajuhataja=3 WHERE ryhmnimi='LOGITpv25'
+```
