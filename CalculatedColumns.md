@@ -1,3 +1,6 @@
+[Põhimõisted](README.md) | [Kasutajad](Kasutaja.md) | [Trigerid](Triger.md) | [Protseduurid](procedure.md) | [Võtmed](Keys.md) | [Arvestatud veerud](CalculatedColumns.md) | [Funktsioonid](StringOperatorsandFunctions.md) | [Alter Table](Tund2Alter.md) | [XAMPP - Trigerid ja kasutajad](TrigerXXAMP.md)
+
+
 ## HOW TO CALCULATE:
 <img width="370" height="161" alt="image" src="https://github.com/user-attachments/assets/e950a2cf-d447-4b8a-8389-343a88909311" />
 
