@@ -1,0 +1,179 @@
+use aleksei_final;
+
+create table Mang(
+MangID int primary key identity(1,1),
+MangNimi varchar (50))
+
+create table KyberSport(
+KyberSportID int primary key identity(1,1),
+KyberRyhmNimi varchar(50),
+OsalejateArv int,
+MangID int,
+foreign key (MangID) REFERENCES Mang(MangID))
+
+create table KyberOsaleja(
+OsalejaID int primary key identity(1,1),
+OsalejaNimi varchar (50),
+Vanus int,
+KyberSportID int,
+foreign key (KyberSportID) references KyberSport(KyberSportID))
+
+select * from Mang
+select * from KyberSport
+select * from KyberOsaleja
+
+select * from logi
+
+insert into Mang(MangNimi)
+values ('Call of Duty 3')
+insert into Mang(MangNimi)
+values ('Need for Speed 5')
+
+insert into KyberSport(KyberRyhmNimi, OsalejateArv)
+values ('Red Dragon', 8)
+update KyberSport SET MangID=1
+where KyberRyhmNimi='Red Dragon'
+
+insert into KyberSport(KyberRyhmNimi, OsalejateArv, MangID)
+values ('Arc Raiders', 4, 2)
+
+insert into KyberOsaleja(OsalejaNimi,Vanus,KyberSportID)
+values ('John Wills', 18, 1)
+insert into KyberOsaleja(OsalejaNimi,Vanus,KyberSportID)
+values ('Bill West', 19, 1)
+
+GRANT insert, delete, select on KyberSport TO osalejaJohnWills
+GRANT insert, delete, select on KyberOsaleja TO osalejaJohnWills
+Grant select on Mang TO osalejaJohnWills
+
+create table logi(
+id int Primary key identity,
+kuupaev DATETIME,
+kasutaja varchar (30),
+toiming varchar (100),
+andmed TEXT)
+
+select * from logi
+
+select * from KyberSport
+
+delete from KyberSport
+where KyberRyhmNimi='Bravo Bravo'
+
+Drop trigger kustutaKyberSport
+Create trigger kustutaKyberSport
+on KyberSport
+FOR DELETE
+AS
+INSERT INTO logi(kuupaev, kasutaja, toiming, andmed)
+select
+GETDATE(),
+SYSTEM_USER,
+'on tehtud DELETE käsk',
+concat('Ryhm: ', deleted.KyberRyhmNimi, ' ID: ', deleted.KyberSportID, ' Mäng: ', Mang.MangNimi)
+from deleted
+inner join Mang
+on deleted.MangID = Mang.MangID
+
+Drop trigger lisaKyberSport
+Create trigger lisaKyberSport
+on KyberSport
+FOR INSERT
+AS
+INSERT INTO logi(kuupaev, kasutaja, toiming, andmed)
+select
+GETDATE(),
+SYSTEM_USER,
+'on tehtud INSERT käsk',
+concat('Ryhm: ', inserted.KyberRyhmNimi, 'ID: ', inserted.KyberSportID, ' Mäng: ', Mang.MangNimi)
+from inserted
+inner join Mang
+on inserted.MangID = Mang.MangID
+
+DENY insert, delete, update on logi TO osalejaJohnWills
+
+--10
+Create procedure otsingOsaleja
+@taht char(1)
+AS
+BEGIN
+	Select * From KyberOsaleja
+	where OsalejaNimi LIKE @taht + '%';
+END
+
+EXEC otsingOsaleja 'J';
+
+CREATE PROCEDURE lisaOsaleja
+    @uusKyberOsaleja varchar(50),
+	@uusKyberVanus int,
+	@uusKyberSportID int
+AS
+BEGIN
+    INSERT INTO KyberOsaleja(OsalejaNimi, Vanus, KyberSportID)
+    VALUES (@uusKyberOsaleja, @uusKyberVanus, @uusKyberSportID);
+    SELECT * FROM KyberOsaleja;
+END;
+
+exec lisaOsaleja 'Lawrence Queens', 19, 1
+
+create procedure deleteOsaleja
+	@kustutanimi varchar (50)
+as
+begin
+	DELETE from KyberOsaleja where OsalejaNimi = @kustutanimi
+	Select * from KyberOsaleja
+END;
+
+exec deleteOsaleja 'Lawrence Queens'
+
+--11
+select * from KyberOsaleja
+select * from KyberSport
+Where KyberRyhmNimi = 'Red Dragon'
+
+drop view meeskondkoosseis
+CREATE VIEW meeskondkoosseis
+AS
+SELECT KyberRyhmNimi, OsalejaNimi
+FROM KyberSport
+Inner join KyberOsaleja
+on Kybersport.KyberSportID = KyberOsaleja.KyberSportID
+
+Select * from meeskondkoosseis WHERE KyberRyhmNimi = 'Red Dragon'
+
+Create view mangudjameeskonnad
+AS
+Select MangNimi, KyberRyhmNimi
+FROM Mang
+Inner join KyberSport
+on Mang.MangID = Kybersport.MangID
+
+select * from mangudjameeskonnad
+
+Create view mangudjaryhmadjaosalejad
+AS
+select MangNimi, KyberRyhmNimi, OsalejaNimi
+FROM Mang
+Inner join KyberSport
+	on Mang.MangID = KyberSport.MangID
+Inner join KyberOsaleja 
+	on KyberSport.KyberSportID = KyberOsaleja.KyberSportID;
+
+select * from mangudjaryhmadjaosalejad
+
+--12
+
+Create table preemiafond(
+winmoney int,
+MangID int,
+foreign key (MangID) REFERENCES Mang(MangID))
+
+insert into preemiafond(winmoney, MangID)
+values (10000, 1)
+select * from preemiafond
+
+Select MangNimi, winmoney / OsalejateArv as 'Raha Osajatele' from preemiafond
+Inner join Mang
+	on Mang.MangID = preemiafond.MangID 
+inner join KyberSport
+	on Mang.MangID = KyberSportID
